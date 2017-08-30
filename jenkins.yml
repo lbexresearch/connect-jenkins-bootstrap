@@ -27,3 +27,31 @@ spec:
         env:
         - name: JAVA_OPTS
           value: "-Djenkins.install.runSetupWizard=false"
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+        - mountPath: /var/jenkins_home/.ssh
+          name: ssh-volume
+      initContainers:
+      - name: clone-repo
+        image: jenkins/jenkins:lts
+        command: 
+          - /bin/sh
+          - -c
+          - cp /etc/secret-volume/ssh-privatekey ~/.ssh/id_rsa;cp /etc/secret-volume/ssh-publickey ~/.ssh/id_rsa.pub;chmod 400 ~/.ssh/*;printf "host github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa\n User jenkins" > ~/.ssh/config;ssh-keyscan github.com >> ~/.ssh/known_hosts;cd /usr/share/jenkins/ref && git clone git@github.com:ikhripunov/connect-jenkins-bootstrap.git
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+        - mountPath: /etc/secret-volume
+          name: secret-volume
+          readOnly: true
+        - mountPath: /var/jenkins_home/.ssh
+          name: ssh-volume
+      volumes:
+      - name: ref-volume
+        emptyDir: {}
+      - name: ssh-volume
+        emptyDir: {}
+      - name: secret-volume
+        secret:
+          secretName: ssh-key-secret
