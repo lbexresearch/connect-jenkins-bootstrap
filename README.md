@@ -2,6 +2,7 @@
 ## Description
 Bootstraps Jenkins and some plugins into a Kubernetes cluster
 ## Installation Instructions
+### Local cluster
 Make sure you have Minikube 
 1. Checkout the repository
 1. Generate SSH keys in the repository folder `ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -N ""`
