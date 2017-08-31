@@ -56,6 +56,24 @@ spec:
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
+      - name: override-config
+        image: jenkins/jenkins:lts
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MY_HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        command:
+          - /bin/sh
+          - -c
+          - cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/config.xml.override /usr/share/jenkins/ref/config.xml.override && /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/hack-jenkins-env.sh
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
       volumes:
       - name: ref-volume
         emptyDir: {}
