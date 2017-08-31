@@ -47,6 +47,15 @@ spec:
           readOnly: true
         - mountPath: /var/jenkins_home/.ssh
           name: ssh-volume
+      - name: install-plugins
+        image: jenkins/jenkins:lts
+        command:
+          - /bin/sh
+          - -c
+          - install-plugins.sh < /usr/share/jenkins/ref/connect-jenkins-bootstrap/plugins
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
       volumes:
       - name: ref-volume
         emptyDir: {}
