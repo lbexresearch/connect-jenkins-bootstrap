@@ -74,6 +74,15 @@ spec:
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
+      - name: copy-jobs
+        image: jenkins/jenkins:lts
+        command:
+          - /bin/sh
+          - -c
+          - cp -r /usr/share/jenkins/ref/connect-jenkins-bootstrap/jobs /usr/share/jenkins/ref/
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
       volumes:
       - name: ref-volume
         emptyDir: {}
