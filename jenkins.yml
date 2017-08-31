@@ -32,6 +32,10 @@ spec:
           name: ref-volume
         - mountPath: /var/jenkins_home/.ssh
           name: ssh-volume
+        lifecycle:
+          postStart:
+            exec: 
+              command: ["/bin/sh", "-c", "/usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/wait-for-jenkins-and-run-job.sh test"]
       initContainers:
       - name: clone-repo
         image: jenkins/jenkins:lts
