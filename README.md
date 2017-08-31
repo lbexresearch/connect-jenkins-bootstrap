@@ -4,10 +4,9 @@ Bootstraps Jenkins and some plugins into a Kubernetes cluster
 ## Installation Instructions
 Make sure you have Minikube 
 1. Checkout the repository
+1. Generate SSH keys in the repository folder `ssh-keygen -t rsa -b 4096 -C "your_email@example.com" -N ""`
+1. Add generated key to GitHub account for Jenkins CI 
 1. Execute `run-minikube.sh`
-
-## Build Status
-TravisCI link or something else - delete if not needed
 
 # Connect
 Connect is a Continuous Delivery Platform from [ClearPoint](http://clearpoint.co.nz)  
