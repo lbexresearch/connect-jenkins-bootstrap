@@ -1,0 +1,97 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: jenkins
+  namespace: jenkins
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: master
+    spec:
+      containers:
+      - name: master
+        image: jenkins/jenkins:lts
+        ports:
+        - containerPort: 8080
+        - containerPort: 50000
+        readinessProbe:
+          httpGet:
+            path: /login
+            port: 8080
+          periodSeconds: 10
+          timeoutSeconds: 5
+          successThreshold: 2
+          failureThreshold: 5
+        env:
+        - name: JAVA_OPTS
+          value: "-Djenkins.install.runSetupWizard=false"
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+        - mountPath: /var/jenkins_home/.ssh
+          name: ssh-volume
+        lifecycle:
+          postStart:
+            exec: 
+              command: ["/bin/sh", "-c", "/usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/wait-for-jenkins-and-run-job.sh test"]
+      initContainers:
+      - name: clone-repo
+        image: jenkins/jenkins:lts
+        command: 
+          - /bin/sh
+          - -c
+          - cp /etc/secret-volume/ssh-privatekey ~/.ssh/id_rsa;cp /etc/secret-volume/ssh-publickey ~/.ssh/id_rsa.pub;chmod 400 ~/.ssh/*;printf "host github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa\n User jenkins" > ~/.ssh/config;ssh-keyscan github.com >> ~/.ssh/known_hosts;cd /usr/share/jenkins/ref && git clone git@github.com:ikhripunov/connect-jenkins-bootstrap.git
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+        - mountPath: /etc/secret-volume
+          name: secret-volume
+          readOnly: true
+        - mountPath: /var/jenkins_home/.ssh
+          name: ssh-volume
+      - name: install-plugins
+        image: jenkins/jenkins:lts
+        command:
+          - /bin/sh
+          - -c
+          - install-plugins.sh < /usr/share/jenkins/ref/connect-jenkins-bootstrap/plugins
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+      - name: override-config
+        image: jenkins/jenkins:lts
+        env:
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MY_HOST_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        command:
+          - /bin/sh
+          - -c
+          - cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/config.xml.override /usr/share/jenkins/ref/config.xml.override && /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/hack-jenkins-env.sh
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+      - name: copy-jobs
+        image: jenkins/jenkins:lts
+        command:
+          - /bin/sh
+          - -c
+          - cp -r /usr/share/jenkins/ref/connect-jenkins-bootstrap/jobs /usr/share/jenkins/ref/
+        volumeMounts:
+        - mountPath: /usr/share/jenkins/ref
+          name: ref-volume
+      volumes:
+      - name: ref-volume
+        emptyDir: {}
+      - name: ssh-volume
+        emptyDir: {}
+      - name: secret-volume
+        secret:
+          secretName: ssh-key-secret
