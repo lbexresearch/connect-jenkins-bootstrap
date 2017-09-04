@@ -42,7 +42,7 @@ spec:
         command: 
           - /bin/sh
           - -c
-          - cp /etc/secret-volume/ssh-privatekey ~/.ssh/id_rsa;cp /etc/secret-volume/ssh-publickey ~/.ssh/id_rsa.pub;chmod 400 ~/.ssh/*;printf "host github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa\n User jenkins" > ~/.ssh/config;ssh-keyscan github.com >> ~/.ssh/known_hosts;cd /usr/share/jenkins/ref && git clone git@github.com:ikhripunov/connect-jenkins-bootstrap.git
+          - cp /etc/secret-volume/ssh-privatekey ~/.ssh/id_rsa;cp /etc/secret-volume/ssh-publickey ~/.ssh/id_rsa.pub;chmod 400 ~/.ssh/*;printf "host github.com\n HostName github.com\n IdentityFile ~/.ssh/id_rsa\n User jenkins" > ~/.ssh/config;ssh-keyscan github.com >> ~/.ssh/known_hosts;cd /usr/share/jenkins/ref && git clone git@github.com:ClearPointNZ/connect-jenkins-bootstrap.git
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
@@ -67,10 +67,11 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name: MY_HOST_IP
+        - name: MASTER_URL
           valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
+            configMapKeyRef:
+              name: kube-master
+              key: master.url
         command:
           - /bin/sh
           - -c
