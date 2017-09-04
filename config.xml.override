@@ -67,7 +67,7 @@
           <imagePullSecrets/>
         </org.csanchez.jenkins.plugins.kubernetes.PodTemplate>
       </templates>
-      <serverUrl>https://${MY_HOST_IP}:8443</serverUrl>
+      <serverUrl>${MASTER_URL}</serverUrl>
       <skipTlsVerify>false</skipTlsVerify>
       <namespace>jenkins</namespace>
       <jenkinsUrl>http://${MY_POD_IP}:8080</jenkinsUrl>

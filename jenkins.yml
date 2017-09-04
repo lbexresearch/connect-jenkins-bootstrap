@@ -67,10 +67,11 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.podIP
-        - name: MY_HOST_IP
+        - name: MASTER_URL
           valueFrom:
-            fieldRef:
-              fieldPath: status.hostIP
+            configMapKeyRef:
+              name: kube-master
+              key: master.url
         command:
           - /bin/sh
           - -c

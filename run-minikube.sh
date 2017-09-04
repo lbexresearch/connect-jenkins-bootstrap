@@ -10,4 +10,9 @@ if [[ -z $(kubectl get secrets | grep ssh-key-secret) ]]
 then
 	kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=./id_rsa --from-file=ssh-publickey=./id_rsa.pub
 fi
+if [[ $(kubectl get configmaps --ignore-not-found) ]]
+then
+	kubectl delete configmaps kube-master
+fi
+kubectl create configmap kube-master --from-literal=master.url=$(kubectl cluster-info | grep master | grep -Po 'http\S://[\w\--:]+')
 kubectl apply -f jenkins.yml
