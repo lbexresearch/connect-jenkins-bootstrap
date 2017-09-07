@@ -1,5 +1,4 @@
 #!/bin/bash
-
 minikube start --kubernetes-version v1.7.0
 if [[ -z $(kubectl get namespaces | grep jenkins) ]]
 then
