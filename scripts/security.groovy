@@ -5,6 +5,9 @@ import hudson.security.*
 import hudson.model.User
 import jenkins.security.ApiTokenProperty
 import org.apache.commons.lang.RandomStringUtils
+import com.cloudbees.plugins.credentials.impl.*;
+import com.cloudbees.plugins.credentials.*;
+import com.cloudbees.plugins.credentials.domains.*;
 
 def instance = Jenkins.getInstance()
 
@@ -20,3 +23,7 @@ println 'Admin password is: ' + password
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 instance.setAuthorizationStrategy(strategy)
 instance.save()
+
+
+Credentials c = (Credentials) new UsernamePasswordCredentialsImpl(CredentialsScope.GLOBAL, "940065ee-9235-47c8-b81f-0cf30a26336f", "Admin user and password for JJB", 'admin', password)
+SystemCredentialsProvider.getInstance().getStore().addCredentials(Domain.global(), c)
