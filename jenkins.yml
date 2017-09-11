@@ -75,7 +75,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/config.xml.override /usr/share/jenkins/ref/config.xml.override && /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/hack-jenkins-env.sh
+          - cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/config.xml.override /usr/share/jenkins/ref/config.xml.override && /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/hack-jenkins-env.sh && mkdir /usr/share/jenkins/ref/init.groovy.d && cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
