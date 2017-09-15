@@ -1,5 +1,4 @@
 #!/bin/bash
-minikube start --kubernetes-version v1.7.0
 if [[ -z $(kubectl get namespaces | grep jenkins) ]]
 then
 	kubectl create ns jenkins
@@ -15,3 +14,4 @@ then
 fi
 kubectl create configmap kube-master --from-literal=master.url=$(kubectl cluster-info | grep master | grep -o 'https:\/\/[[:alnum:][:punct:]]*')
 kubectl apply -f jenkins.yml
+kubectl apply -f service.yml
