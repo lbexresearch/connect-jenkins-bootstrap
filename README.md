@@ -2,10 +2,6 @@
 
 ## Description
 Bootstraps for Jenkins and the Kubernetes plugin into a Kubernetes cluster.  
-Follow along with [Connect's](http://connect.cd) posts:
-* [Jenkins bootstrap blog](http://blog.connect.cd/2017/09/bootstrapping-jenkins-in-a-kubernetes-cluster/)
-* [Jenkins bootsrap documentation](https://clearpointnz.github.io/connect/#_bootstrapping_jenkins) 
-* the instructions below.
 
 ## Installation Instructions
 If you just want to try this repo out locally, you can follow the ‘Local Cluster’ instructions below. To install on a remote cluster, follow the ‘Remote cluster’ instructions. There are some subtle but important differences.
@@ -25,8 +21,14 @@ Make sure you have [Minikube](https://kubernetes.io/docs/tasks/tools/install-min
 1. Add the generated key to your [GitHub account](https://github.com/settings/keys) for Jenkins CI to use
 1. Execute `run-remote.sh`
 
+## Documentation
+Documentation can be found here [Jenkins bootsrap documentation](https://clearpointnz.github.io/connect/#_bootstrapping_jenkins).
+
+Also see our related post [Jenkins bootstrap blog](http://blog.connect.cd/2017/09/bootstrapping-jenkins-in-a-kubernetes-cluster/).
+
 ----------------------
 # Connect
+
 [Connect](http://connect.cd) is a Continuous Delivery Platform that gathers best practice approaches for deploying working software into the cloud with confidence.
 
 The main documentation for [Connect](http://connect.cd) can be found at [docs.connect.cd](http://docs.connect.cd)
