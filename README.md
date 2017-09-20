@@ -27,7 +27,7 @@ Documentation can be found at [Jenkins bootsrap documentation](https://clearpoin
 Also see our related post [Jenkins bootstrap blog](http://blog.connect.cd/2017/09/bootstrapping-jenkins-in-a-kubernetes-cluster/).
 
 ----------------------
-image::http://website.clearpoint.co.nz/connect/connect-logo-on-white-border.png[]
+![# Connect](http://website.clearpoint.co.nz/connect/connect-logo-on-white-border.png "Connect Continuous Delivery Platform")
 
 [Connect](http://connect.cd) is a Continuous Delivery Platform that gathers best practice approaches for deploying working software into the cloud with confidence.
 
