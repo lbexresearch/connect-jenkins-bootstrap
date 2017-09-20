@@ -1,10 +1,10 @@
 # connect-jenkins-bootstrap
 
 ## Description
-Bootstraps Jenkins and the Kubernetes plugin into a Kubernetes cluster.  
-Follow along with:
-* [Jenkins Bootstrap blog post](http://blog.connect.cd/2017/09/bootstrapping-jenkins-in-a-kubernetes-cluster/)
-* [Connect documentation](https://clearpointnz.github.io/connect/#_bootstrapping_jenkins) 
+Bootstraps for Jenkins and the Kubernetes plugin into a Kubernetes cluster.  
+Follow along with [Connect's](http://connect.cd) posts:
+* [Jenkins bootstrap blog](http://blog.connect.cd/2017/09/bootstrapping-jenkins-in-a-kubernetes-cluster/)
+* [Jenkins bootsrap documentation](https://clearpointnz.github.io/connect/#_bootstrapping_jenkins) 
 * the instructions below.
 
 ## Installation Instructions
