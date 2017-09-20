@@ -33,4 +33,4 @@ Also see our related post [Jenkins bootstrap blog](http://blog.connect.cd/2017/0
 
 The main documentation for [Connect](http://connect.cd) can be found at [docs.connect.cd](http://docs.connect.cd)
 
-Any queries on the [Connect](http://connect.cd) platform can be sent here: <connect@clearpoint.co.nz>
+Any queries on the [Connect](http://connect.cd) platform can be sent to: <connect@clearpoint.co.nz>
