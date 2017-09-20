@@ -22,12 +22,12 @@ Make sure you have [Minikube](https://kubernetes.io/docs/tasks/tools/install-min
 1. Execute `run-remote.sh`
 
 ## Documentation
-Documentation can be found here [Jenkins bootsrap documentation](https://clearpointnz.github.io/connect/#_bootstrapping_jenkins).
+Documentation can be found at [Jenkins bootsrap documentation](https://clearpointnz.github.io/connect/#_bootstrapping_jenkins).
 
 Also see our related post [Jenkins bootstrap blog](http://blog.connect.cd/2017/09/bootstrapping-jenkins-in-a-kubernetes-cluster/).
 
 ----------------------
-# Connect
+image::http://website.clearpoint.co.nz/connect/connect-logo-on-white-border.png[]
 
 [Connect](http://connect.cd) is a Continuous Delivery Platform that gathers best practice approaches for deploying working software into the cloud with confidence.
 
