@@ -8,7 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>git@github.com:ikhripunov/connect-simple-todos-app.git</url>
+        <url>git@github.com:ikhripunov/meta-jjb.git</url>
         <credentialsId>088d3940-55c4-4d8c-85c5-007886b9555c</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
@@ -26,27 +26,16 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers>
-    <hudson.triggers.SCMTrigger>
-      <spec>*/5 * * * *</spec>
-      <ignorePostCommitHooks>false</ignorePostCommitHooks>
-    </hudson.triggers.SCMTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <javaposse.jobdsl.plugin.ExecuteDslScripts plugin="job-dsl@1.65">
-      <targets>jobs/**/*.groovy</targets>
-      <usingScriptText>false</usingScriptText>
-      <sandbox>false</sandbox>
-      <ignoreExisting>false</ignoreExisting>
-      <ignoreMissingFiles>false</ignoreMissingFiles>
-      <failOnMissingPlugin>false</failOnMissingPlugin>
-      <unstableOnDeprecation>false</unstableOnDeprecation>
-      <removedJobAction>DISABLE</removedJobAction>
-      <removedViewAction>DELETE</removedViewAction>
-      <removedConfigFilesAction>DELETE</removedConfigFilesAction>
-      <lookupStrategy>SEED_JOB</lookupStrategy>
-    </javaposse.jobdsl.plugin.ExecuteDslScripts>
+    <hudson.tasks.Shell>
+      <command>set +x
+echo password=${ADMIN_PASSWORD} &gt;&gt; jjb-config.ini
+echo url=${JENKINS_REAL_URL} &gt;&gt; jjb-config.ini
+set -x
+scripts/builder.sh</command>
+    </hudson.tasks.Shell>
   </builders>
   <publishers/>
   <buildWrappers>
