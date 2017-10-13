@@ -8,7 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>git@github.com:ikhripunov/meta-jjb.git</url>
+        <url>git@github.com:ikhripunov/connect-simple-todos-app.git</url>
         <credentialsId>088d3940-55c4-4d8c-85c5-007886b9555c</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
