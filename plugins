@@ -2,4 +2,4 @@ kubernetes:latest
 git:latest
 credentials:latest
 credentials-binding:latest
-dsl-jobs:latest
+workflow-aggregator:latest
