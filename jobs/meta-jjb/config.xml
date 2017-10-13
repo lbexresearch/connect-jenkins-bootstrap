@@ -34,7 +34,7 @@
 echo password=${ADMIN_PASSWORD} &gt;&gt; jjb-config.ini
 echo url=${JENKINS_REAL_URL} &gt;&gt; jjb-config.ini
 set -x
-scripts/builder.sh</command>
+jobs/meta/scripts/builder.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
