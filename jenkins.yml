@@ -82,8 +82,7 @@ spec:
           - /bin/sh
           - -c
           - mkdir /usr/share/jenkins/ref/init.groovy.d;
-            cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/config.xml.override /usr/share/jenkins/ref/config.xml.override;
-            cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/credentials.xml.override /usr/share/jenkins/ref/credentials.xml.override;
+            cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/overrides/* /usr/share/jenkins/ref/;
             cp /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy;
             /usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/hack-jenkins-env.sh;
         volumeMounts:

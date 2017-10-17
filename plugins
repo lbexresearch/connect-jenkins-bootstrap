@@ -4,4 +4,3 @@ kubernetes:latest
 git:latest
 credentials:latest
 credentials-binding:latest
-permissive-script-security:latest
