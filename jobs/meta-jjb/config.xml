@@ -1,7 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project>
   <actions/>
-  <description></description>
+  <description/>
   <keepDependencies>false</keepDependencies>
   <properties/>
   <scm class="hudson.plugins.git.GitSCM" plugin="git@3.5.1">
@@ -21,32 +21,29 @@
     <submoduleCfg class="list"/>
     <extensions/>
   </scm>
-  <assignedNode>jjb</assignedNode>
   <canRoam>false</canRoam>
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers/>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>*/5 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.tasks.Shell>
-      <command>set +x
-echo password=${ADMIN_PASSWORD} &gt;&gt; jjb-config.ini
-echo url=${JENKINS_REAL_URL} &gt;&gt; jjb-config.ini
-set -x
-jobs/meta/scripts/builder.sh</command>
-    </hudson.tasks.Shell>
+    <javaposse.jobdsl.plugin.ExecuteDslScripts>
+      <targets>jobs/**/*.groovy</targets>
+      <usingScriptText>false</usingScriptText>
+      <scriptText/>
+      <ignoreExisting>false</ignoreExisting>
+      <removedJobAction>DELETE</removedJobAction>
+      <removedViewAction>IGNORE</removedViewAction>
+      <lookupStrategy>JENKINS_ROOT</lookupStrategy>
+      <additionalClasspath/>
+    </javaposse.jobdsl.plugin.ExecuteDslScripts>
   </builders>
   <publishers/>
-  <buildWrappers>
-    <org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper plugin="credentials-binding@1.13">
-      <bindings>
-        <org.jenkinsci.plugins.credentialsbinding.impl.UsernamePasswordMultiBinding>
-          <credentialsId>940065ee-9235-47c8-b81f-0cf30a26336f</credentialsId>
-          <usernameVariable>ADMIN_USERNAME</usernameVariable>
-          <passwordVariable>ADMIN_PASSWORD</passwordVariable>
-        </org.jenkinsci.plugins.credentialsbinding.impl.UsernamePasswordMultiBinding>
-      </bindings>
-    </org.jenkinsci.plugins.credentialsbinding.impl.SecretBuildWrapper>
-  </buildWrappers>
+  <buildWrappers/>
 </project>
