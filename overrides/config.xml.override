@@ -33,6 +33,7 @@
           <instanceCap>2147483647</instanceCap>
           <slaveConnectTimeout>100</slaveConnectTimeout>
           <idleMinutes>0</idleMinutes>
+          <activeDeadlineSeconds>0</activeDeadlineSeconds>
           <label>jjb</label>
           <nodeSelector></nodeSelector>
           <nodeUsageMode>EXCLUSIVE</nodeUsageMode>
@@ -40,13 +41,26 @@
           <workspaceVolume class="org.csanchez.jenkins.plugins.kubernetes.volumes.workspace.EmptyDirWorkspaceVolume">
             <memory>false</memory>
           </workspaceVolume>
-          <volumes/>
+          <volumes>
+            <org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume>
+              <mountPath>/usr/bin/docker</mountPath>
+              <hostPath>/usr/bin/docker</hostPath>
+            </org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume>
+            <org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume>
+              <mountPath>/var/run/docker.sock</mountPath>
+              <hostPath>/var/run/docker.sock</hostPath>
+            </org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume>
+            <org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume>
+              <mountPath>/usr/bin/dockerd</mountPath>
+              <hostPath>/usr/bin/dockerd</hostPath>
+            </org.csanchez.jenkins.plugins.kubernetes.volumes.HostPathVolume>
+          </volumes>
           <containers>
             <org.csanchez.jenkins.plugins.kubernetes.ContainerTemplate>
               <name>jnlp</name>
-              <image>ikhripunov/jjb-jnlp-slave</image>
-              <privileged>false</privileged>
-              <alwaysPullImage>false</alwaysPullImage>
+              <image>ikhripunov/connect-jenkins-slave</image>
+              <privileged>true</privileged>
+              <alwaysPullImage>true</alwaysPullImage>
               <workingDir>/home/jenkins</workingDir>
               <command></command>
               <args>${computer.jnlpmac} ${computer.name} </args>
