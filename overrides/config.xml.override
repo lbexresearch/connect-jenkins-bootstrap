@@ -20,7 +20,7 @@
   <viewsTabBar class="hudson.views.DefaultViewsTabBar"/>
   <myViewsTabBar class="hudson.views.DefaultMyViewsTabBar"/>
   <clouds>
-    <org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud plugin="kubernetes@1.0">
+<!--     <org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud plugin="kubernetes@1.0">
       <name>kubernetes</name>
       <defaultsProviderTemplate></defaultsProviderTemplate>
       <templates>
@@ -95,7 +95,7 @@
       <connectTimeout>0</connectTimeout>
       <readTimeout>0</readTimeout>
       <maxRequestsPerHost>32</maxRequestsPerHost>
-    </org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud>
+    </org.csanchez.jenkins.plugins.kubernetes.KubernetesCloud> -->
   </clouds>
   <quietPeriod>5</quietPeriod>
   <scmCheckoutRetryCount>0</scmCheckoutRetryCount>
