@@ -5,6 +5,9 @@ import hudson.security.*
 import hudson.model.User
 import jenkins.security.ApiTokenProperty
 import org.apache.commons.lang.RandomStringUtils
+import com.cloudbees.plugins.credentials.impl.*;
+import com.cloudbees.plugins.credentials.*;
+import com.cloudbees.plugins.credentials.domains.*;
 
 def instance = Jenkins.getInstance()
 
@@ -20,3 +23,4 @@ println 'Admin password is: ' + password
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 instance.setAuthorizationStrategy(strategy)
 instance.save()
+
