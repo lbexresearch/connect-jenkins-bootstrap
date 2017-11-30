@@ -34,7 +34,7 @@
           <slaveConnectTimeout>100</slaveConnectTimeout>
           <idleMinutes>0</idleMinutes>
           <activeDeadlineSeconds>0</activeDeadlineSeconds>
-          <label>jjb</label>
+          <label>k8s-dind-worker</label>
           <nodeSelector></nodeSelector>
           <nodeUsageMode>EXCLUSIVE</nodeUsageMode>
           <customWorkspaceVolumeEnabled>false</customWorkspaceVolumeEnabled>
