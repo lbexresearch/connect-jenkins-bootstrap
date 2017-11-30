@@ -34,12 +34,12 @@ spec:
           name: ssh-volume
         lifecycle:
           postStart:
-            exec: 
-              command: ["/bin/sh", "-c", "/usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/wait-for-jenkins-and-run-job.sh meta-jjb"]
+            exec:
+              command: ["/bin/sh", "-c", "/usr/share/jenkins/ref/connect-jenkins-bootstrap/scripts/wait-for-jenkins-and-run-job.sh meta-job"]
       initContainers:
       - name: clone-repo
         image: jenkins/jenkins:lts
-        command: 
+        command:
           - /bin/sh
           - -c
           - cp /etc/secret-volume/ssh-privatekey ~/.ssh/id_rsa;
