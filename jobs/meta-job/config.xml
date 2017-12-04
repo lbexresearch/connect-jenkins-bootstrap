@@ -8,7 +8,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>git@bitbucket.org:clearpoint/connect-sample-apps.git</url>
+        <url>git@github.com:ClearPointNZ/connect-sample-apps.git</url>
         <credentialsId>jenkins-clearpoint</credentialsId>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
