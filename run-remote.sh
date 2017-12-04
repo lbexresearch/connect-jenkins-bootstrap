@@ -6,7 +6,7 @@ fi
 kubectl config set-context $(kubectl config current-context) --namespace=jenkins
 if [[ -z $(kubectl get secrets | grep ssh-key-secret) ]]
 then
-	kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=./id_rsa --from-file=ssh-publickey=./id_rsa.pub
+	kubectl create secret generic ssh-key-secret --from-file=ssh-privatekey=./jenkins_sample_apps.id_rsa --from-file=ssh-publickey=./jenkins_sample_apps.id_rsa.pub
 fi
 if [[ $(kubectl get configmaps --ignore-not-found) ]]
 then
