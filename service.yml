@@ -3,6 +3,9 @@ kind: Service
 metadata:
   name: jenkins
   namespace: jenkins
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: "jenkins.connect.cd"
+    external-dns.alpha.kubernetes.io/ttl: "10"
 spec:
   externalTrafficPolicy: Cluster
   ports:
