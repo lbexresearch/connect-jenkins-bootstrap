@@ -138,7 +138,7 @@
           </default>
           <int>1</int>
           <string>JENKINS_REAL_URL</string>
-          <string>http://${MY_POD_IP}:8080</string>
+          <string>http://jenkins:8080</string>
         </tree-map>
       </envVars>
     </hudson.slaves.EnvironmentVariablesNodeProperty>
