@@ -1,0 +1,18 @@
+Master:
+  InstallPlugins:
+    - workflow-job:2.15
+    - workflow-aggregator:latest
+    - branch-api:2.0.14
+    - git:latest
+    - kubernetes:latest
+    - credentials:latest
+    - credentials-binding:latest
+    - job-dsl:latest
+    - kubernetes-pipeline-steps:latest
+rbac:
+  install: true
+  serviceAccountName: helm-jenkins
+  # RBAC api version (currently either v1beta1 or v1alpha1)
+  apiVersion: v1beta1
+  # Cluster role reference
+  roleRef: cluster-admin
