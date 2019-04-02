@@ -13,4 +13,4 @@ then
 	kubectl delete configmaps kube-master
 fi
 kubectl create configmap kube-master --from-literal=master.url=$(kubectl cluster-info | grep master | grep -o 'https:\/\/[[:alnum:][:punct:]]*')
-kubectl apply -f jenkins.yml
+kubectl apply -f jenkins.yml --validate=false
