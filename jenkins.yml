@@ -62,7 +62,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/connect-jenkins-bootstrap/plugins;
+          - /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/connect-jenkins-bootstrap/plugins
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
