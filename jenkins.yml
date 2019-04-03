@@ -49,7 +49,6 @@ spec:
             ssh-keyscan github.com >> ~/.ssh/known_hosts;
             cd /usr/share/jenkins/ref;
             git clone git@github.com:lbexresearch/connect-jenkins-bootstrap.git
-
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
@@ -63,7 +62,7 @@ spec:
         command:
           - /bin/sh
           - -c
-          - install-plugins.sh < /usr/share/jenkins/ref/connect-jenkins-bootstrap/plugins
+          - /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/connect-jenkins-bootstrap/plugins;
         volumeMounts:
         - mountPath: /usr/share/jenkins/ref
           name: ref-volume
